@@ -1,6 +1,6 @@
 const display = document.getElementById("display");
 const question = document.getElementById("question");
-const startBtn = document.getElementById("starts");
+const startBtn = document.getElementById("start");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
@@ -10,8 +10,6 @@ let userText = "";
 let errorCount = 0;
 let startTime;
 let questionText = "";
-
-
 
 // Load and display question
 fetch("./texts.json")
@@ -115,18 +113,18 @@ const start = () => {
     if (count == 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+      countdownOverlay.style.display = "none";
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
       startTime = new Date().getTime();
     }
-    count--
+    count--;
   }, 1000);
 };
 
 // START Countdown
-startBtn.addEventListener('click', start);
+startBtn.addEventListener("click", start);
 
 // If history exists, show it
 displayHistory();
